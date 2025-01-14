@@ -4,16 +4,21 @@ const placesList = container.querySelector('.places__list');
 function addCard(imageSrc, titleValue) {
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
+    
+    const imageCardEl = cardElement.querySelector('.card__image');
+    const titleCardEl = cardElement.querySelector('.card__title');
+    const likeButtonCardEl = cardElement.querySelector('.card__like-button');
+    const deleteButtonCardEl = cardElement.querySelector('.card__delete-button');
 
-    cardElement.querySelector('.card__image').setAttribute('src', imageSrc);
-    cardElement.querySelector('.card__image').setAttribute('alt', 'изображена ' + titleValue + ', а именно самые узноваемые виды');
-    cardElement.querySelector('.card__title').textContent = titleValue;
+    imageCardEl.setAttribute('src', imageSrc);
+    imageCardEl.setAttribute('alt', titleValue);
+    titleCardEl.textContent = titleValue;
 
-    cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) { 
-        cardElement.querySelector('.card__like-button').classList.toggle('card__like-button_is-active');
+    likeButtonCardEl.addEventListener('click', function (evt) { 
+        likeButtonCardEl.classList.toggle('card__like-button_is-active');
         });
 
-    cardElement.querySelector('.card__delete-button').addEventListener('click', function (evt) { 
+    deleteButtonCardEl.addEventListener('click', function (evt) { 
         cardElement.setAttribute('style', 'display:none');
         });
 
