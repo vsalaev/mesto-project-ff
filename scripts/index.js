@@ -25,4 +25,18 @@ function addCard(imageSrc, titleValue) {
     placesList.append(cardElement);
 };
 
+
+// функция принимает в вызов карточку и метод вставки
+// метод по умолчанию `prepend`, но можно указать `append` 
+
+function renderCard(item, method = "prepend") {
+
+    // создаем карточку, передавая обработчики в виде объекта `callbacks`
+    const cardElement = createCard(item, callbacks);
+  
+    // вставляем карточку, используя метод (вставится `prepend` или `append`)
+    cardList[ method ](cardElement);
+  }
+  
+
 initialCards.forEach(item => addCard(item.link, item.name));
