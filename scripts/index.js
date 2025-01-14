@@ -1,9 +1,23 @@
-// @todo: Темплейт карточки
+const container = document.querySelector('.content');
+const placesList = container.querySelector('.places__list');
 
-// @todo: DOM узлы
+function addCard(imageSrc, titleValue) {
+    const cardTemplate = document.querySelector('#card-template').content;
+    const cardElement = cardTemplate.querySelector('.places__item').cloneNode(true);
 
-// @todo: Функция создания карточки
+    cardElement.querySelector('.card__image').setAttribute('src', imageSrc);
+    cardElement.querySelector('.card__image').setAttribute('alt', 'изображена ' + titleValue + ', а именно самые узноваемые виды');
+    cardElement.querySelector('.card__title').textContent = titleValue;
 
-// @todo: Функция удаления карточки
+    cardElement.querySelector('.card__like-button').addEventListener('click', function (evt) { 
+        cardElement.querySelector('.card__like-button').classList.toggle('card__like-button_is-active');
+        });
 
-// @todo: Вывести карточки на страницу
+    cardElement.querySelector('.card__delete-button').addEventListener('click', function (evt) { 
+        cardElement.setAttribute('style', 'display:none');
+        });
+
+    placesList.append(cardElement);
+};
+
+initialCards.forEach(item => addCard(item.link, item.name));
